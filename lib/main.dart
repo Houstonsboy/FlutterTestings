@@ -4,8 +4,15 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int vote = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +41,11 @@ class MyApp extends StatelessWidget {
                       fontFamily: 'Trattatello, fantasy',
                     ),
                   ),
+                  Text('$vote',
+                      style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 30,
+                      )),
                   Container(
                     child: Icon(Icons.apartment_rounded),
                     width: 100.0,
@@ -48,7 +60,11 @@ class MyApp extends StatelessWidget {
                 label: Text("Welcome"),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    vote += 1;
+                  });
+                },
                 icon: Icon(Icons.home),
                 color: Colors.green,
               ),
@@ -69,19 +85,5 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class Test extends StatefulWidget {
-  const Test({super.key});
-
-  @override
-  State<Test> createState() => _TestState();
-}
-
-class _TestState extends State<Test> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
