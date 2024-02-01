@@ -8,7 +8,7 @@ class Inbox extends StatelessWidget {
     return Column(
       children:[
         Container(
-          width: 
+           
         )
         
       ]
